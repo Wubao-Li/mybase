@@ -1,7 +1,5 @@
 FROM centos:7.2.1511
 
-COPY nginx.repo /etc/yum.repos.d/nginx.repo
-
 ENV GO_VERSION=1.7 \
     NODEJS_VERSION=v6.4.0 \
     LANG=en_US.UTF-8 \
@@ -14,7 +12,7 @@ RUN yum -y update \
     && localedef -c -f UTF-8 -i en_US en_US.UTF-8 \
     && rm -f /etc/localtime \
     && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-    && yum -y install python-pip supervisor nginx libevent-devel python-backports-lzma \
+    && yum -y install python-pip supervisor libevent-devel python-backports-lzma \
 # Change working dir to /tmp
     && cd /tmp \
 # Installing node.js
