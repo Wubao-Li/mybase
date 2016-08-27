@@ -2,7 +2,7 @@ FROM centos:7.2.1511
 
 ENV GO_VERSION=1.7 \
     NODEJS_VERSION=v6.4.0 \
-    DJANGO_VERSION 1.10 \
+    DJANGO_VERSION=1.10 \
     LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8 \
     GOPATH=/go \
