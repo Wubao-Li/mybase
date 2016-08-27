@@ -2,13 +2,14 @@ FROM centos:7.2.1511
 
 ENV GO_VERSION=1.7 \
     NODEJS_VERSION=v6.4.0 \
+    DJANGO_VERSION 1.10 \
     LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8 \
     GOPATH=/go \
     PATH=/usr/local/go/bin:/go/bin:$PATH
 
 RUN yum -y update \
-    && yum -y install epel-release gcc g++ make git mercurial tar mariadb-devel mariadb libffi-devel openssl-devel unzip wget curl iproute bind-utils \
+    && yum -y install epel-release gcc g++ make git mercurial tar mariadb-devel mysql-devel mariadb libffi-devel openssl-devel unzip wget curl iproute bind-utils \
     && localedef -c -f UTF-8 -i en_US en_US.UTF-8 \
     && rm -f /etc/localtime \
     && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
@@ -29,5 +30,8 @@ RUN yum -y update \
 # Clean installed and downloaded packages
     && yum -y clean all \
     && rm -rf /tmp/*
+    
+# Installing Djaong
+RUN pip3.5 install mysqlclient redis gunicorn django=="$DJANGO_VERSION"
 
 CMD ["python3.5"]
