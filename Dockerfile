@@ -32,6 +32,6 @@ RUN yum -y update \
     && rm -rf /tmp/*
     
 # Installing Djaong
-RUN pip3.5 install mysqlclient redis gunicorn django=="$DJANGO_VERSION"
+RUN pip3.5 install mysqlclient pycryptodome redis gunicorn django=="$DJANGO_VERSION"
 
 CMD ["python3.5"]
